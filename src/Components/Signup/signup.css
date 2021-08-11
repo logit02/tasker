@@ -1,0 +1,21 @@
+
+.inik ,.upik {
+    height: 26px;
+    width: 80px;
+    border-radius: 30px;
+    color: white;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    font-family: Poppins-medium;
+
+
+}
+
+.upik { 
+    border: solid 2px #F3477A;
+    background: #F3477A;
+}
+
+.inik {
+    border: solid 2px #47d1f3;
+    background: #47d1f3;
+}
