@@ -15,7 +15,7 @@ import{  useState } from "react";
 
 function Signup(){
 
-   let [username, setUsername] = useState(false)
+   let [username, setUsername] = useState()
    let [pass, setPass] = useState()
 
 
@@ -36,6 +36,7 @@ function Signup(){
 
       try {
             const body = {username, pass};
+            console.log(username)
             const response = fetch("http://localhost:5000/users", {
                 method : "POST", 
                 headers : { "Content-Type" : "application/json"},
@@ -46,15 +47,13 @@ function Signup(){
       }catch (err) {
           console.error(err.message);
       }
+     // window.location = '/login';
   }
       
 
 
     
-    if(username){
-        localStorage.setItem('myVal', JSON.stringify(username));
-    }
-
+    
     function Redirect_login(){
         window.location = '/login';
     }
@@ -69,13 +68,13 @@ return(
             <p>Lithium Signup</p>
             
             <div className='filling_in'>
-                <fragment className='buts'>
+                <div className='buts'>
             <button className='upik' onClick = {Redirect_signup} >Signup</button>
             <button className='inik' onClick = {Redirect_login}>Login</button>
-                </fragment>
+                </div>
             <input className='username' type='text' placeholder='Username' onChange ={handleInput}></input>
             <input className='username' type='password' placeholder='Password' onChange ={handlePass}></input>
-            <input className='submit' name='sinmt' type='Submit' onClick = {handleClick}></input>
+            <input className='submit' name='submit' type='Submit' onClick = {handleClick}></input>
             
             <NavLink to="/home" className='forgot'>Having trouble logging in ?</NavLink>
             </div>

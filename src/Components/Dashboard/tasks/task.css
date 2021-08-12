@@ -1,0 +1,92 @@
+
+
+.wrap { 
+    width: 700px;
+}
+
+.num_tasks { 
+    
+    width: 340px;
+    margin-left:40px;
+    font-family: Poppins-medium;
+    font-size: 25px;
+    
+    
+}
+
+.create { 
+    height: 40px;
+    width: 700px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    
+}
+
+.add { 
+    
+    height: 30px;
+    width: 100px;
+    border-radius: 30px;
+    border: solid #884CB2 2px;
+    background: #884CB2;
+    color: white;
+    font-family: Poppins-light;
+}
+.wraping { 
+    width: 700px;
+}
+
+.task_title { 
+    width: 700px;
+    margin-left: 50px;
+    font-family: Poppins-light;
+    font-size: 15px;
+    
+}
+
+ul { 
+    width: 700px;
+}
+li{ 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 30px;
+    width: 700px;
+    
+   
+   
+}
+.tit { 
+    margin-left: 65px;
+    font-family: Poppins-light;
+    font-size: 13px;
+    width: 340px;
+    
+   
+}
+
+.status { 
+    height: 20px;
+    width: 90px;
+    border-radius: 30px;
+    border:solid #F2994A;
+    background: #F2994A;
+    opacity: 0.7;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-family: Poppins-light;
+    font-size: 10px;
+  
+
+}
+
+.trash { 
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+    margin-left: 10px;;
+}

@@ -36,13 +36,24 @@ function Login(){
 
       try {
             const body = {username, pass};
-            const response = fetch("http://localhost:5000/users", {
+            const res = fetch("http://localhost:5000/login", {
                 method : "POST", 
                 headers : { "Content-Type" : "application/json"},
                 body : JSON.stringify(body, pass)
 
-            });
-            console.log(response);
+            }).then((res)=> res.json())
+            .then((response)=>{     
+               console.log(response)
+
+               if(response.message === true){
+                window.location = '/dashboard';
+                localStorage.setItem('user','true' )
+               }
+            })
+
+
+           
+            
       }catch (err) {
           console.error(err.message);
       }
@@ -50,10 +61,11 @@ function Login(){
       
 
 
+
+
+
     
-    if(username){
-        localStorage.setItem('myVal', JSON.stringify(username));
-    }
+   
 
     function Redirect_login(){
         window.location = '/login';
@@ -68,10 +80,10 @@ return(
         <div className='login'>
             <p>Lithium Login</p>
             <div className='filling_in'>
-                <fragment className='buts'>
+                <div className='buts'>
             <button className='up' onClick = {Redirect_signup}>Signup</button>
             <button className='in' onClick = {Redirect_login}>Login</button>
-                </fragment>
+                </div>
             <input className='username' type='text' placeholder='Username' onChange ={handleInput}></input>
             <input className='username' type='password' placeholder='Password' onChange ={handlePass}></input>
             <input className='submit' name='sinmt' type='Submit' onClick = {handleClick}></input>

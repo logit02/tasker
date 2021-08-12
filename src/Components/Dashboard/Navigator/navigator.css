@@ -4,54 +4,57 @@
 }
 
 
-.search_icon, .notif_icon {
-    height: 25px;
-    width: 25px;
-}
-
-.al {
-    margin-left: 30px;
-    
-    display: flex ;
-    flex-direction: row;
-    
-    height: 80px;
-    margin-top: 20px;
-}
-
-.search_part { 
-    height: 80px;
-    display: flex ;
-    flex-direction: row;
-    
-    width: 50%;
-}
-
-.search {
-    width: 200px;
+.search_icon { 
     height: 20px;
-    border-radius: 20px;
-    border:solid white;
-
+    width: 20px;
+    margin-left: 10px;
+    opacity: 0.7;
 }
 
-.account { 
-    width: 50%;
-    display: flex ;
+.nav { 
+    padding-top: 20px;
+    display: flex;
     flex-direction: row;
-    justify-content: right;
+    justify-content: space-between ;
+    height: 70px;
     
-    height: 80px;
+}
+
+
+.left , .right { 
+   
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+   
+}
+
+.left{
+    width: 80%;
+    margin-left: 20px;
+}
+
+.right { 
+    width: 15%;
+}
+
+.search_bar {
+    margin-left: 10px;
+    padding-left: 10px;
+    height:20px;
+    width: 250px;
+    border: solid white;
     
+    color:#90A0B7;
 }
 
 
-
-.hello { 
-    height: 26px;
-    margin:0;
-    font-size: 15px;
-    font-family: Poppins-light;
-    width: 110px;
-    
+.image { 
+    height: 40px;
+    width: 40px;
+    margin-left: 20px;
+    border-radius: 30px;
+    border: solid #F3477A 2px;
 }
+
+

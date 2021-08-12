@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 import {NavLink} from 'react-router-dom';
 import './dashboard.css'
 import Navigator from './Navigator/navigator.js'
+import Task from '../Dashboard/tasks/task.js'
 
 import {
     Switch,
@@ -18,7 +19,7 @@ function Dashboard() {
         <Switch>
         <Route path="/dashboard">
          <Navigator />
-     
+        <Task />
             
         </Route>
 

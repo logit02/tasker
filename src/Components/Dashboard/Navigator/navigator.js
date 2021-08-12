@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom';
 import './navigator.css';
 import search from '../../../Assets/images/outline_search_black_24dp.png';
 import notif from '../../../Assets/images/outline_notifications_black_24dp.png';
-
+import dog from '../../../Assets/images/pexels-anna-shvets-4587991.jpg';
 
 import {
     Switch,
@@ -15,22 +15,20 @@ import {
 from "react-router-dom";
 import{  useState } from "react";
 
+
+
+
 function Navigator(){
 return(
-    <fragment className='al'>
-        
-        <div className='search_part'>
-        <img src = {search} alt='search' className='search_icon'/>
-        <input className='search'
-                    
-                    placeholder = "Search for an item"
-                    type = "text" />
-                    </div>
-                    
-        <div className='account'>
-        <img src = {notif} alt='notif' className='notif_icon'/>
-        <p className='hello'>Hello, Inesa !</p>
+    <fragment className='nav'>
+        <div className='left'>
+            <img className= 'search_icon' src = {search} alt='#'></img>
+            <input type='text' name='text' placeholder='Search a task' className='search_bar'></input>
 
+        </div>
+        <div className='right'>
+        <img className= 'search_icon' src = {notif} alt='#'></img>
+        <img className= 'image' src = {dog} alt='#'></img>
         </div>
     </fragment>
 )
