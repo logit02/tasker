@@ -18,6 +18,7 @@
     justify-content: space-between ;
     height: 70px;
     
+    
 }
 
 
@@ -30,12 +31,12 @@
 }
 
 .left{
-    width: 80%;
+    width: 70%;
     margin-left: 20px;
 }
 
 .right { 
-    width: 15%;
+    width: 20%;
 }
 
 .search_bar {
@@ -58,3 +59,12 @@
 }
 
 
+.log_out{
+    height: 30px;
+    margin-left: 15px;
+    width: 50px;
+    border-radius: 20px;
+    border: solid white;
+    background-color: white;
+    
+}

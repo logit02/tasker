@@ -6,30 +6,32 @@ import {
     Route,
     Redirect,
     
+    
 } 
 from "react-router-dom";
+import{  useState } from "react";
 import Signup from './Components/Signup/signup.js'
 import Dashboard from './Components/Dashboard/dashboard.js'
 import Login from './Components/Login/login.js'
 
-function App() {
-  return (
-      <div>
-        <BrowserRouter>
-        <Switch>
-            <Route path="/signup">
-                <Signup/>
-            </Route>
-            <Route path="/dashboard">
-                <Dashboard/>
-            </Route>
-            <Route path="/login">
-                <Login/>
-            </Route>
+import  {LoginContext} from './Components/Contexts/LoginContext'
 
-            <Redirect  from ='/' to ='/signup'></Redirect> 
-                
-        </Switch>
+function App() {
+    const [isauth, setisAuth] = useState(false);
+    
+    
+    
+   
+  return (
+    
+      <div>
+       <BrowserRouter>
+
+       
+          < LoginContext.Provider value = {{isauth, setisAuth}}>
+           {isauth ? <Dashboard /> : <Login />}
+            </LoginContext.Provider>
+
         </BrowserRouter>
       </div>
   );

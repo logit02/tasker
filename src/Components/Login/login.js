@@ -1,22 +1,25 @@
-import React, { Fragment } from 'react'; 
+import React  from 'react'; 
 import {NavLink} from 'react-router-dom';
 import './login.css'
 
-import {
-    Switch,
-    Route,
-    
-} 
 
-from "react-router-dom";
-import{  useState } from "react";
+import{  useState , useContext} from "react";
+
+import {LoginContext} from '../Contexts/LoginContext'
+import Dashboard from '../Dashboard/dashboard';
 
 
 
 function Login(){
 
+    
+    //const { isauth } = useContext(LoginContext);
+    
+   // setisAuth(true)
+
    let [username, setUsername] = useState(false)
    let [pass, setPass] = useState()
+
 
 
     function handleInput(event) {
@@ -29,8 +32,9 @@ function Login(){
             
            }
        
-         
-
+        
+           const {isauth,setisAuth} = useContext(LoginContext);
+           
   const handleClick = async e => {
       e.preventDefault();
 
@@ -44,12 +48,21 @@ function Login(){
             }).then((res)=> res.json())
             .then((response)=>{     
                console.log(response)
-
+              
                if(response.message === true){
-                window.location = '/dashboard';
-                localStorage.setItem('user','true' )
+                
+                    if (isauth===false){
+                        
+                        console.log("yep")
+                        setisAuth(true)
+                    
+                    }
+                    
+                  }
+                
                }
-            })
+              
+            )
 
 
            
@@ -74,16 +87,19 @@ function Login(){
     function Redirect_signup(){
         window.location = '/signup';
     }
-
+    
 return(
+   
     <div className='back'>
         <div className='login'>
             <p>Lithium Login</p>
             <div className='filling_in'>
                 <div className='buts'>
-            <button className='up' onClick = {Redirect_signup}>Signup</button>
-            <button className='in' onClick = {Redirect_login}>Login</button>
+               
+           {/*} <button className='up' onClick = {Redirect_signup}>Signup</button> */}
+         <button className='in' onClick = {Redirect_login}>Login</button> 
                 </div>
+               
             <input className='username' type='text' placeholder='Username' onChange ={handleInput}></input>
             <input className='username' type='password' placeholder='Password' onChange ={handlePass}></input>
             <input className='submit' name='sinmt' type='Submit' onClick = {handleClick}></input>

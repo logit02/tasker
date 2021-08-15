@@ -55,11 +55,20 @@ li{
     align-items: center;
     height: 30px;
     width: 700px;
+    margin-top: 20px;
+    
     
    
    
 }
 .tit { 
+     display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 30px;
+    width: 700px;
+    margin-top: 20px;
+    
     margin-left: 65px;
     font-family: Poppins-light;
     font-size: 13px;

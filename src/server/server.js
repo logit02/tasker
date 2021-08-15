@@ -13,18 +13,21 @@ app.use(express.json());
 
 //create todo
 
-app.post('/users', async (req,res) => {
-   try {
-        const {username, pass} = req.body;
-        
-        const hash = await bcrypt.hash(pass, 10);        
 
-        const newUser = await pool.query("INSERT INTO members (username, password) VALUES ($1, $2) RETURNING *", [username, hash]);
-res.json(newUser.rows[0])
-   }catch(err){
-       console.error(err.message);
-   }
-})
+app.post('/users', async (req,res) => {
+    try {
+         const {username, pass} = req.body;
+         
+         const hash = await bcrypt.hash(pass, 10);        
+ 
+         const newUser = await pool.query("INSERT INTO members (username, password) VALUES ($1, $2) RETURNING *", [username, hash]);
+ res.json(newUser.rows[0])
+    }catch(err){
+        console.error(err.message);
+    }
+ })
+
+
 
 //login
 
@@ -38,11 +41,14 @@ app.post('/login', async (req,res) => {
         if(User.rows[0]){
            // console.log(User.rows[0].password)
           // console.log(User.rows[0])
-        const validPass = await bcrypt.compare(pass, User.rows[0].password);
+            const validPass = await bcrypt.compare(pass, User.rows[0].password);
            
-           if(validPass){
-              console.log('works')
-              return res.json({message:true});
+                if(validPass){
+                 console.log('works')
+                 return res.json({message:true});
+                
+                 
+              
               
            }else {
                console.log('wrong pass')
@@ -50,7 +56,7 @@ app.post('/login', async (req,res) => {
         }else{
            console.log('chka')
         }
-
+       
     }catch(err){
         console.error(err.message);
     }
