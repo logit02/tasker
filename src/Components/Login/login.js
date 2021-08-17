@@ -1,13 +1,9 @@
 import React  from 'react'; 
 import {NavLink} from 'react-router-dom';
 import './login.css'
-
-
 import{  useState , useContext} from "react";
-
 import {LoginContext} from '../Contexts/LoginContext'
-import Dashboard from '../Dashboard/dashboard';
-
+//import Dashboard from '../Dashboard/dashboard';
 
 
 function Login(){
@@ -84,15 +80,15 @@ function Login(){
         window.location = '/login';
     }
 
-    function Redirect_signup(){
+   /* function Redirect_signup(){
         window.location = '/signup';
     }
-    
+    */
 return(
    
     <div className='back'>
         <div className='login'>
-            <p>Lithium Login</p>
+            <p>Spirit App</p>
             <div className='filling_in'>
                 <div className='buts'>
                

@@ -3,21 +3,27 @@ import './navigator.css';
 import search from '../../../Assets/images/outline_search_black_24dp.png';
 import notif from '../../../Assets/images/outline_notifications_black_24dp.png';
 import dog from '../../../Assets/images/pexels-anna-shvets-4587991.jpg';
-import {
-    
-    Link,
-    
-} 
+import {Link} from "react-router-dom";
+import {LoginContext} from '../../Contexts/LoginContext'
+import{useContext} from "react";
 
-from "react-router-dom";
-import Account from '../../account/account'
+//import Account from '../../account/account'
 
 function Navigator(){
+    const {isauth, setisAuth} = useContext(LoginContext);
+    
+    function log(){
+        window.location= '/signin'
+        setisAuth(false)
+        localStorage.removeItem('state')
+       
 
-
-    function imageClick(){
-       console.log(123)
     }
+
+    function Move_acc(){
+        window.location = '/dashboard/acc'
+    }
+
 return(
     <div className='nav'>
         <div className='left'>
@@ -27,8 +33,9 @@ return(
         </div>
         <div className='right'>
         <img className= 'search_icon' src = {notif} alt='#'></img>
-        <img className= 'image' src = {dog}  onClick={() => imageClick()} alt='#'></img>
-        <button className='log_out'>Log out</button>
+        <img className= 'image' src = {dog} onClick={Move_acc}  alt='#'></img>
+        
+        <button className='log_out' onClick={log}>Log out</button>
         </div>
     </div>
 )

@@ -1,6 +1,4 @@
-
 import React from 'react'; 
-
 import './dashboard.css'
 import Navigator from './Navigator/navigator.js'
 import Task from '../Dashboard/tasks/task.js'
@@ -18,31 +16,28 @@ import{useContext} from "react";
 
 
 function Dashboard(){
-    
    
     const {isauth} = useContext(LoginContext);
+    localStorage.setItem('state', isauth)
     console.log('dashboardi mej em', isauth)
-  
+    //window.location= '/dashboard'
+   
     return(
        <div>
-           
+       
         <Switch>
-            <Route exact path="/dashboard">
+         
+        <Route exact path={`/dashboard`}  render={props =>
+            <div>
                 <Navigator />
                 <Task />
-            
-            </Route>
-            
+            </div>} />
 
-            <Route exact path="/dashboard/acc">
-                <Account />
-            
-            </Route>
+6       <Route exact path={`/dashboard/acc`} component={Account} />
+7      
 
-        <Redirect from = '/' to = '/dashboard'/>
-
-       
-
+       {isauth ? <Redirect to = '/dashboard'></Redirect>: <Redirect to = '/signin'></Redirect>}      
+                
         
         </Switch>
         </div>
