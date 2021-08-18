@@ -3,7 +3,8 @@ import {NavLink} from 'react-router-dom';
 import './signup.css'
 
 
-import{  useState } from "react";
+import{  useState, useContext } from "react";
+import {LoginContext} from '../Contexts/LoginContext'
 
 
 
@@ -11,9 +12,15 @@ function Signup(){
 
    let [username, setUsername] = useState()
    let [pass, setPass] = useState()
+   const{loginPart, setLoginPart} = useContext(LoginContext);
+   const [name, setName] = useState('')
    
 
-   
+   function handleName(event) {
+    setName(event.target.value)
+    
+   }
+
 
     function handleInput(event) {
          setUsername(event.target.value)
@@ -30,9 +37,11 @@ function Signup(){
             e.preventDefault();
       
             try {
-                  const body = {username, pass};
+                
+                
+                  const body = {username, pass , name};
                   console.log(username)
-                  const response = fetch("http://localhost:5000/users", {
+                  const response = fetch("http://localhost:5000/user", {
                       method : "POST", 
                       headers : { "Content-Type" : "application/json"},
                       body : JSON.stringify(body, pass)
@@ -43,41 +52,28 @@ function Signup(){
                 console.error(err.message);
             }
             
-            window.location = '/login';
+           
         }
 
 
     
     
     function Redirect_login(){
-        window.location = '/login';
+        setLoginPart(true);
     }
 
     function Redirect_signup(){
-        window.location = '/signup';
+        setLoginPart(false);
     }
 
 return(
-    <div className='back'>
-        <div className='login'>
-            <p>Lithium Signup</p>
-            
-            <div className='filling_in'>
-              
-                <div className='buts'>
-            <button className='upik' onClick = {Redirect_signup} >Signup</button>
-            <button className='inik' onClick = {Redirect_login}>Login</button>
-                </div>
-              {/*}  <p className='err'>{err}</p> */}
-            <input className='username' type='text' placeholder='Username' onChange ={handleInput}></input>
+    <div className = 'filling_in'>
+            <input className='username' type='text' placeholder='Name, Surname' onChange ={handleName}></input>
+     <input className='username' type='text' placeholder='Username' onChange ={handleInput}></input>
             <input className='username' type='password' placeholder='Password' onChange ={handlePass}></input>
-            <input className='submit' name='submit' type='Submit' onClick = {handleClick}></input>
+            <button className='submit' onClick = {handleClick}>Join now!</button>
             
-            <NavLink to="/home" className='forgot'>Having trouble logging in ?</NavLink>
-            </div>
-            
-        </div>
-        
+           
     </div>
     
 )
@@ -85,3 +81,4 @@ return(
 
 
 export default Signup;
+

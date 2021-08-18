@@ -16,10 +16,11 @@ import{useContext} from "react";
 
 
 function Dashboard(){
-   
+    const {validuser} = useContext(LoginContext);
     const {isauth} = useContext(LoginContext);
     localStorage.setItem('state', isauth)
     console.log('dashboardi mej em', isauth)
+    console.log('dashboardi mej em', validuser)
     //window.location= '/dashboard'
    
     return(

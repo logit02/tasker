@@ -1,21 +1,22 @@
 import React  from 'react'; 
-import {NavLink} from 'react-router-dom';
+import {NavLink, Switch} from 'react-router-dom';
 import './login.css'
 import{  useState , useContext} from "react";
 import {LoginContext} from '../Contexts/LoginContext'
+import Signup from '../Signup/signup'
 //import Dashboard from '../Dashboard/dashboard';
 
 
+
 function Login(){
-
     
-    //const { isauth } = useContext(LoginContext);
     
-   // setisAuth(true)
-
+  
+   
    let [username, setUsername] = useState(false)
    let [pass, setPass] = useState()
-
+   const {validuser, setValidUser} = useContext(LoginContext);
+   const{loginPart, setLoginPart} = useContext(LoginContext);
 
 
     function handleInput(event) {
@@ -43,7 +44,8 @@ function Login(){
 
             }).then((res)=> res.json())
             .then((response)=>{     
-               console.log(response)
+               console.log(response.username)
+               setValidUser(response.username)
               
                if(response.message === true){
                 
@@ -69,42 +71,54 @@ function Login(){
   }
       
 
-
-
-
-
-    
-   
-
     function Redirect_login(){
-        window.location = '/login';
+        setLoginPart(true)
     }
 
-   /* function Redirect_signup(){
-        window.location = '/signup';
+    function Redirect_signup(){
+        setLoginPart(false)
     }
-    */
+
+    function Log(){
+        return(
+            <div className='filling_in'>
+        <input className='username' type='text' placeholder='Username' onChange ={handleInput}></input>
+        <input className='username' type='password' placeholder='Password' onChange ={handlePass}></input>
+        <input className='submit' name='sinmt' type='Submit' onClick = {handleClick}></input>
+        </div>
+        )
+    }
+   
 return(
    
     <div className='back'>
         <div className='login'>
-            <p>Spirit App</p>
-            <div className='filling_in'>
-                <div className='buts'>
+                <p>Spirit App</p>
+                <div className='filling_in'>
+                    <div className='buts'>
                
-           {/*} <button className='up' onClick = {Redirect_signup}>Signup</button> */}
-         <button className='in' onClick = {Redirect_login}>Login</button> 
-                </div>
+                        <button className='up' onClick = {Redirect_signup}>Signup</button> 
+                        <button className='in' onClick = {Redirect_login}>Login</button> 
+                    </div>
                
-            <input className='username' type='text' placeholder='Username' onChange ={handleInput}></input>
-            <input className='username' type='password' placeholder='Password' onChange ={handlePass}></input>
-            <input className='submit' name='sinmt' type='Submit' onClick = {handleClick}></input>
+
+                {loginPart ? ( 
+                    <div className='filling_in'>
+                        <input className='username' type='text' placeholder='Username' onChange ={handleInput}></input>
+                        <input className='username' type='password' placeholder='Password' onChange ={handlePass}></input>
+                         <button className='submit' onClick = {handleClick}>Login</button>
+                     </div>)
+                : <Signup />}
+                
+                
+               
             
-            <NavLink to="/home" className='forgot'>Having trouble logging in ?</NavLink>
+                <NavLink to="/home" className='forgot'>Having trouble logging in ?</NavLink>
             </div>
             
         </div>
-        
+
+       
     </div>
     
 )

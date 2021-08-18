@@ -27,12 +27,12 @@
     flex-direction: row;
     justify-content: center;
    align-items: center;
-    background: linear-gradient(249deg, #EDC1D3, #91BDEC);
+    background: linear-gradient(249deg, #F3477A, #91BDEC);
     background-size: 400% 400%;
 
-    -webkit-animation: AnimationName 31s ease infinite;
-    -moz-animation: AnimationName 31s ease infinite;
-    animation: AnimationName 31s ease infinite;
+    -webkit-animation: AnimationName 10s ease infinite;
+    -moz-animation: AnimationName 30s ease infinite;
+    animation: AnimationName 20s ease infinite;
 }
 
 @-webkit-keyframes AnimationName {
@@ -91,7 +91,7 @@ p {
     width: 140px;
     height: 30px;
     border-radius: 30px;
-    margin-top: 0px;
+    margin-top: 30px;
     padding-left: 10px;
     border:solid white;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
@@ -102,7 +102,7 @@ p {
 }
 
 .submit { 
-    margin-top: 10px;
+    margin-top: 20px;
     width: 100px;
     border-radius: 30px;
     height: 30px;

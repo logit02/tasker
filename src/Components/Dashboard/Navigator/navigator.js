@@ -11,6 +11,7 @@ import{useContext} from "react";
 
 function Navigator(){
     const {isauth, setisAuth} = useContext(LoginContext);
+    const {validuser} = useContext(LoginContext);
     
     function log(){
         window.location= '/signin'
@@ -32,6 +33,7 @@ return(
 
         </div>
         <div className='right'>
+            <p className='valid-user'>Hi , {validuser}</p>
         <img className= 'search_icon' src = {notif} alt='#'></img>
         <img className= 'image' src = {dog} onClick={Move_acc}  alt='#'></img>
         

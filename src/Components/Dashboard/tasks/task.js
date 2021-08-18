@@ -1,11 +1,14 @@
-import React from 'react'; 
+import React, { useEffect } from 'react'; 
 import './task.css'
 import trash from '../../../Assets/images/outline_delete_black_24dp.png'
-import{useState} from "react";
+import{useState, useContext} from "react";
+import {LoginContext} from '../../Contexts/LoginContext'
+
 
 function ToDo({ todo, toggleTask, removeTask }) {
     const [status, setStatus] = useState(false);
     const [value, setValue] = useState('Pending')
+    
     function maketrue(){
         setStatus(!status);
             if(value==='Pending'){
@@ -71,8 +74,12 @@ function ToDoForm({ addTask }) {
 
 
 function Task(){
-    let num =7;
+    let quotes = ['you are doing great', 'keep it up bitch', ' you are the cleverest ']
+
    
+    const listItems = quotes.map((quote) => <li className='quote'>{quote}</li>);
+    let num =7;
+  
     const [todos, setTodos] = useState([])
     console.log(todos)
 
@@ -98,30 +105,53 @@ function Task(){
       )
     ])
   }
-      
+  
+      useEffect(() => { 
+          const todo_data = window.localStorage.getItem('task-data')
+          
+          setTodos(JSON.parse(todo_data))
+         
+      }, []);
+
+      useEffect(() => { 
+          window.localStorage.setItem('task-data', JSON.stringify(todos))
+          
+      })
+
+
       
     return(
         <div className='wrap'>
-            <div className='create'>
-                <h1 className='num_tasks'>You've got <span style={{color: '#F3477A'}}> {todos.length + ' tasks' } </span> today</h1>
+            <div className='todo-left-panel'>
+                <div className='create'>
+                    <h1 className='num_tasks'>You've got <span style={{color: '#F3477A'}}> {todos.length + ' tasks' } </span> today</h1>
                 
                 
-            </div>
+                </div>
             
-            <ToDoForm addTask={addTask} />
-            <div className='box'>
-                {todos.map((todo) => {
-                    return (
+                <ToDoForm addTask={addTask} />
+                <div className='box'>
+                {   todos.map((todo) => {
+                        return (
                         
-                        <ToDo
-                            todo={todo}
-                            key={todo.id}
-                            toggleTask={handleToggle}
-                            removeTask={removeTask}
-                        />
+                            <ToDo
+                                todo={todo}
+                                key={todo.id}
+                                toggleTask={handleToggle}
+                                removeTask={removeTask}
+                            />
                        
-                         )
-                 })}
+                             )
+                        })}
+                 </div>
+                 </div>
+                 <div className='todo-right-panel'>
+                  
+                    <h1 className='general-title'>let's boost your <span style={{color: '#F3477A', fontFamily:'Poppins-medium', fontSize:'20px'}}> Spirit </span> </h1>
+                    <ul className='motivation'>
+                  {/* {listItems} */}
+                    </ul>
+                    
                  </div>
         </div>
     )

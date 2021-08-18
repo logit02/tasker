@@ -9,24 +9,21 @@ const bcrypt = require('bcryptjs');
 app.use(cors());
 app.use(express.json());
 
-//Routes
-
-//create todo
 
 
-app.post('/users', async (req,res) => {
+app.post('/user', async (req,res) => {
     try {
-         const {username, pass} = req.body;
+         const {username, pass, name} = req.body;
          
          const hash = await bcrypt.hash(pass, 10);        
  
-         const newUser = await pool.query("INSERT INTO members (username, password) VALUES ($1, $2) RETURNING *", [username, hash]);
+         const newUser = await pool.query("INSERT INTO members (username, password, name_surname) VALUES ($1, $2, $3) RETURNING *", [username, hash, name]);
  res.json(newUser.rows[0])
     }catch(err){
         console.error(err.message);
     }
  })
-
+ 
 
 
 //login
@@ -40,12 +37,14 @@ app.post('/login', async (req,res) => {
        
         if(User.rows[0]){
            // console.log(User.rows[0].password)
-          // console.log(User.rows[0])
+           const id = User.rows[0].user_id
+           const user_name = User.rows[0].username
             const validPass = await bcrypt.compare(pass, User.rows[0].password);
            
                 if(validPass){
                  console.log('works')
-                 return res.json({message:true});
+                 return res.json({message:true, user:id, username:user_name});
+                 
                 
                  
               
