@@ -5,6 +5,8 @@ const cors = require("cors");
 const pool = require("./db");
 const bcrypt = require('bcryptjs');
 
+const port = process.env.APP_PORT ? process.env.APP_PORT : 5000;
+
 //middleware
 app.use(cors());
 app.use(express.json());
@@ -18,13 +20,16 @@ app.post('/user', async (req,res) => {
          const hash = await bcrypt.hash(pass, 10);        
  
          const newUser = await pool.query("INSERT INTO members (username, password, name_surname) VALUES ($1, $2, $3) RETURNING *", [username, hash, name]);
+
+         res.status(200).send({status_text: "Ok", message: "blabla", status: "0x00"})
  res.json(newUser.rows[0])
     }catch(err){
         console.error(err.message);
+
+        res.status(500).send({status_text: "Error", message: "blabla error", status: "0x01"})
     }
  })
  
-
 
 //login
 
@@ -62,7 +67,7 @@ app.post('/login', async (req,res) => {
  })
 
 
-app.listen(5000, () =>{
-    console.log('server has started on port 5000');
+app.listen(port, () =>{
+    console.log(`server has started on port ${port}`);
 })
 

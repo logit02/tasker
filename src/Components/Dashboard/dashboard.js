@@ -1,5 +1,5 @@
 import React from 'react'; 
-import './dashboard.css'
+// import './dashboard.css'
 import Navigator from './Navigator/navigator.js'
 import Task from '../Dashboard/tasks/task.js'
 import Account from '../account/account.js'
