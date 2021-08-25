@@ -6,6 +6,7 @@ import {LoginContext} from '../../Contexts/LoginContext'
 
 
 function ToDo({ todo, toggleTask, removeTask }) {
+   
     const [status, setStatus] = useState(false);
     const [value, setValue] = useState('Pending')
     
@@ -74,6 +75,8 @@ function ToDoForm({ addTask }) {
 
 
 function Task(){
+
+   
     let quotes = ['you are doing great', 'keep it up bitch', ' you are the cleverest ']
 
    
@@ -115,6 +118,7 @@ function Task(){
 
       useEffect(() => { 
           window.localStorage.setItem('task-data', JSON.stringify(todos))
+        
           
       })
 
@@ -147,7 +151,7 @@ function Task(){
                  </div>
                  <div className='todo-right-panel'>
                   
-                    <h1 className='general-title'>let's boost your <span style={{color: '#F3477A', fontFamily:'Poppins-medium', fontSize:'20px'}}> Spirit </span> </h1>
+                    <h1 className='general-title'>Chat with <span style={{color: '#F3477A', fontFamily:'Poppins-medium', fontSize:'20px'}}> Friends! </span> </h1>
                     <ul className='motivation'>
                   {/* {listItems} */}
                     </ul>

@@ -9,7 +9,7 @@ import Login from './Components/Login/login.js'
 import  {LoginContext} from './Components/Contexts/LoginContext'
 
 function App() {
-  console.log('Appi mej enq')
+
     const [loginPart, setLoginPart] = useState(true)
     const [isauth, setisAuth] = useState(false);
     const [validuser, setValidUser] = useState('');
